@@ -17,3 +17,9 @@
     justify-content: center;
     justify-items: center;
   }
+  .crosses {
+    background-color: black;
+  }
+  .os {
+    background-color: green;
+  }
