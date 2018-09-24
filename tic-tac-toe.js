@@ -9,19 +9,22 @@ document.addEventListener('click', function(event) {
       return;
     }
     // validation if click is on empty cell
-    if (clicked.classList.contains('os') || clicked.classList.contains('crosses')) {
+    if (clicked.innerText === 'x' || clicked.innerText === 'o') {
         return;
     }
-    // adds clicked elements number classes to their result arrays (os and crosses) and adds style classes
+    // adds clicked elements number classes to their result arrays (os and crosses) and adds content
     if (round % 2 === 0) {
-        clicked.classList.add('os');
         os.push(clicked.className);
+        clicked.innerText = 'o';
     } else {
-        clicked.classList.add('crosses');
         crosses.push(clicked.className);
+        clicked.innerText = 'x';
     }
     // counts round number            
     round += 1;
     console.log(crosses);
     console.log(os);
+    var osResult = os.join('');
+    console.log(osResult);
+    
 })

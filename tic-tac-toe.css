@@ -15,11 +15,6 @@
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    justify-items: center;
-  }
-  .crosses {
-    background-color: black;
-  }
-  .os {
-    background-color: green;
+    align-items: center;
+    font-size: 40px;
   }
