@@ -1,6 +1,7 @@
 var round = 0; //os are starting
 var crosses = [];
 var os = [];
+var winningTable = ["012","345","678","036","147","258","048","246"];
 
 document.addEventListener('click', function(event) {
     var clicked = event.target;
@@ -26,10 +27,10 @@ document.addEventListener('click', function(event) {
     if (round >= 5) {
         var osResult = os.join('').match(/\d+/g).sort().join('');
         var crossesResult = crosses.join('').match(/\d+/g).sort().join('');
-        if (osResult.includes("012") || osResult.includes("345") || osResult.includes("678") || osResult.includes("036") || osResult.includes("147") || osResult.includes("258") || osResult.includes("048") || osResult.includes("246")) {
+        if (winningTable.some(code => osResult.includes(code)) === true) {
             setTimeout(function() { alert('os wins'); }, 10);
         } else {
-            if (crossesResult.includes("012") || crossesResult.includes("345") || crossesResult.includes("678") || crossesResult.includes("036") || crossesResult.includes("147") || crossesResult.includes("258") || crossesResult.includes("048") || crossesResult.includes("246")) {
+            if ((winningTable.some(code => crossesResult.includes(code))) === true) {
                 setTimeout(function() { alert('crosses wins'); }, 10);
             }   
             else {
