@@ -1,12 +1,27 @@
+.infoPanel {
+  display: flex;
+  margin: 0 auto;
+  width: 192px;
+  height: 60px;
+  margin: 0 auto;
+  margin-top: 25%;
+  margin-bottom: 5px;
+  border: 2px solid black;
+  background: lightblue;
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+}
 .board {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    align-items: normal;
+    align-items: center;
     margin: 0 auto;
     width: 200px;
     height: 200px;
-    margin-top: 100px;
+    margin-bottom: 25%;
   }
   .cell {
     width: 60px;
@@ -16,5 +31,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 30px;
+    font-family: 'Roboto', sans-serif;
   }
