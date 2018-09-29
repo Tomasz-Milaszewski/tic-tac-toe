@@ -2,6 +2,8 @@ var round = 0; //os are starting
 var crosses = [];
 var os = [];
 var winningTable = ["012","345","678","036","147","258","048","246"];
+var infoPanel = document.querySelector('.infoPanel');
+var infoPanelText = document.querySelector('span');
 
 document.addEventListener('click', function(event) {
     var clicked = event.target;
@@ -17,9 +19,11 @@ document.addEventListener('click', function(event) {
     if (round % 2 === 0) {
         os.push(clicked.className);
         clicked.innerText = 'O';
+        infoPanelText.innerText = 'X turn'
     } else {
         crosses.push(clicked.className);
         clicked.innerText = 'X';
+        infoPanelText.innerText = 'O turn'
     }
     // counts round number            
     round += 1;
@@ -28,14 +32,20 @@ document.addEventListener('click', function(event) {
         var osResult = os.join('').match(/\d+/g).sort().join('');
         var crossesResult = crosses.join('').match(/\d+/g).sort().join('');
         if (winningTable.some(code => osResult.includes(code)) === true) {
-            setTimeout(function() { alert('os wins'); window.location.reload(); }, 10);
+            infoPanelText.innerText = 'O wins';
+            infoPanel.style.backgroundColor = 'lightgreen';
+            setTimeout(function() {window.location.reload()}, 1000);
         } else {
             if ((winningTable.some(code => crossesResult.includes(code))) === true) {
-                setTimeout(function() { alert('crosses wins'); window.location.reload(); }, 10);
+                infoPanelText.innerText = 'X wins';
+                infoPanel.style.backgroundColor = 'lightgreen';
+                setTimeout(function() {window.location.reload()}, 1000);
             }   
             else {
                 if (round === 9) {
-                    setTimeout(function() { alert('draw'); window.location.reload(); }, 10);
+                    infoPanelText.innerText = 'Draw';
+                    infoPanel.style.backgroundColor = 'lightsalmon';
+                    setTimeout(function() {window.location.reload()}, 1000);
                 }
             }
         }   
