@@ -27,25 +27,42 @@ document.addEventListener('click', function(event) {
     }
     // counts round number            
     round += 1;
+    console.log(round);
     // winning condition
     if (round >= 5) {
         var osResult = os.join('').match(/\d+/g).sort().join('');
         var crossesResult = crosses.join('').match(/\d+/g).sort().join('');
-        if (winningTable.some(code => osResult.includes(code)) === true) {
+        console.log(osResult);
+        console.log(crossesResult);
+        if (winningTable.some(code => osResult.includes(code[0]) && osResult.includes(code[1])&& osResult.includes(code[2])) === true) {
             infoPanelText.innerText = 'O wins';
             infoPanel.style.backgroundColor = 'lightgreen';
-            setTimeout(function() {window.location.reload()}, 1000);
+            setTimeout(function() {
+                infoPanelText.innerText = 'Play again';
+                infoPanel.style.backgroundColor = 'lightgrey';
+                infoPanel.style.cursor = 'pointer';
+                infoPanel.addEventListener('click', function(){window.location.reload()})
+                }, 1000);
         } else {
-            if ((winningTable.some(code => crossesResult.includes(code))) === true) {
+            if (winningTable.some(code => crossesResult.includes(code[0]) && crossesResult.includes(code[1])&& crossesResult.includes(code[2])) === true) {
                 infoPanelText.innerText = 'X wins';
                 infoPanel.style.backgroundColor = 'lightgreen';
-                setTimeout(function() {window.location.reload()}, 1000);
-            }   
-            else {
+                setTimeout(function() {
+                    infoPanelText.innerText = 'Play again';
+                    infoPanel.style.backgroundColor = 'lightgrey';
+                    infoPanel.style.cursor = 'pointer';
+                    infoPanel.addEventListener('click', function(){window.location.reload()})
+                }, 1000);
+            } else {
                 if (round === 9) {
                     infoPanelText.innerText = 'Draw';
                     infoPanel.style.backgroundColor = 'lightsalmon';
-                    setTimeout(function() {window.location.reload()}, 1000);
+                    setTimeout(function() {
+                        infoPanelText.innerText = 'Play again';
+                        infoPanel.style.backgroundColor = 'lightgrey';
+                        infoPanel.style.cursor = 'pointer';
+                        infoPanel.addEventListener('click', function(){window.location.reload()})
+                    }, 1000);
                 }
             }
         }   
